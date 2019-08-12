@@ -17,3 +17,29 @@ Just a Laptop (or even a tablet with a comfortable keyboard) connected to the in
 - Check the "Kernel" at the top right of your page. It should say "Python 3" with a Python Logo at the top:
 
 ![Python Logo](/img/fig-02-python-kernel.PNG)
+
+## Learning Objectives
+
+This breakfast & learn session is a mere introductory class. Actually putting what we've learned so far will still be up to the learners.
+
+This session will concentrate more on the programming part of python and will just make use of Jupyter to make it convinient for us to develop.
+
+Early coding best practices will be emphasized.
+
+## Outline
+
+- Intro: What developers do in NuWorks & Some Opportunities for Non Devs to do Tech Jobs.
+- [Introduction to Python](/modules/intro-to-python.md)
+    - Why Python
+    - Variables & Basic Arithmetic
+    - Functions & Lambda Functions
+    - Control Statements
+    - Arrays & Dictionaries
+    - Loops
+- 
+
+## Tips
+
+![](/img/fig-02-actual-vs-watching.PNG)
+
+It's recommended to try to do the examples while the instructor is discussing the topics.
