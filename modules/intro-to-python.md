@@ -180,3 +180,235 @@ get_triangle_area = lambda base, height: 1/2 * base * height
 ```
 
 It may not make sense right now why lambda functions exists, but later on, we will make proper use of them to really reap their benefits. For now, keep their syntax in mind.
+
+## Control Statements Pt1: Conditional Statements
+
+Control statements are statements in your code that alter the flow of execution. If you've noticed, code runs in a straight forward manner - going from top to bottom.
+
+We'll first explore the conditional statements:
+
+### `if` Statement
+`if` statement tests if a given expression is `true` (boolean), if it is, it executes the *indented* code below it. For example:
+
+```python
+userIsAdmin = True
+if userIsAdmin:
+    print("The user is an administrator") # should print
+```
+
+or
+
+```python
+userIsGuest = False
+if userIsGuest:
+    print("The user is a guest") # nothing should happen
+```
+
+### `elif` Statement
+
+`elif` stands for "else, if ...". This means that if the previous if statement is false, try this statement instead. For example:
+
+```python
+userIsAdmin = True
+userIsGuest = False
+
+if userIsAdmin:
+    print("The user is an administrator")
+elif userIsGuest:
+    print("The user is a guest")
+```
+
+### `else` Statement
+
+Lastly, the `else` statement is for when all the conditional statement fails, the operations below the `else` keyword gets invoked:
+
+```python
+userIsAdmin = False
+userIsGuest = False
+
+if userIsAdmin:
+    print("The user is an administrator")
+elif userIsGuest:
+    print("The user is a guest")
+else:
+    print("The user is neither administrator nor a guest")
+```
+
+To make conditionals actually useful, we need to be able to test for values of a variable.
+
+### Comparing Values
+
+Programmers are able to compare between two or more values using what we call "Relational Operators" and "Logical Operators"
+
+#### Relational Operators
+
+Relational operators compare two values using the following operators:
+
+|Operator|Description|Example Expression|
+|-|-|-|
+| == | Tests for equality | x == y |
+| != | Tests if the two value are not equal | x == y |
+| > | Test if the lhs value is greater than the rhs | x > y |
+| < | ^ Vise versa | x < y |
+| >= | Test if lhs is greater than or equal to the rhs | x >= y |
+| <= | ^ Vise versa | x <= y |
+
+Examples:
+
+```python
+secretKey = input("Tell me the secret key and I'll tell you the secret phrase: ")
+
+if secretKey == "jollibee":
+    print("I love you sabado")
+else:
+    print("You don't know the secret")
+```
+
+Simple guessing Game Version 1
+
+```python
+secretNumber = 13
+userGuess = int(input("Guess my secret number"))
+
+if userGuess == secretNumber:
+    print("You're good")
+elif userGuess < secretNumber:
+    print("No, it's a little higher than that")
+else:
+    print("No, it's a little lower than that")
+```
+
+What if we don't want the code to stop until we get the number right? We'll learn that later on when we do loops.
+
+#### Logical Operators
+
+Logical operators are useful for when you have multiple relational operations to test:
+
+|Operator|Description|Example Expression|
+|-|-|-|
+| and | Test if both lhs and rhs is true | x and y |
+| or | Test if either side is true | x or y |
+
+Examples:
+
+Testing for Float Ranges: A student grade converter
+
+```python
+studentGrade = float(input("Input your grade: "))
+convertedGrade = "invalid"
+
+if studentGrade <= 100 and studentGrade >= 97:
+    convertedGrade = 1.0
+elif studentGrade <= 96 and studentGrade >= 93:
+    convertedGrade = 1.5
+
+# ... and so on up to 5.0
+
+print(convertedGrade)
+```
+
+## Control Statements Pt1: Looping Statements
+
+Looping statements are for when you want a certain operation to run again and again until a certain condition is still true, or you want your code to run through lists (to be explored later when we reach lists and dictionaries) or go through a range.
+
+### While Loop
+
+While loops make the code run while a given condition is still true. For example, let's modify our simple guessing game to not stop until we enter the correct number:
+
+To do this, we need to be able to generate a random number first. For this, we'll need to "import" a library. A library is a collection of code that you may reuse:
+
+```python
+import random
+
+secretNumber = random.randint(5, 20)
+
+# Milestone! Let's check first if random really works before we integrate the guessing game
+print(secretNumber)
+```
+
+Now, we can do the actual loop:
+
+Simple guessing Game Version 2
+
+```python
+import random
+
+secretNumber = random.randint(5, 20)
+
+userGuess = int(input("Guess my secret number: "))
+
+while secretNumber != userGuess:
+    if userGuess < secretNumber:
+        print("No, it's a little higher than that")
+    else:
+        print("No, it's a little lower than that")
+
+    userGuess = int(input("Guess my secret number: "))
+
+print("You got it!")
+```
+
+__Danger!__ You should notice that it's possible to unintentionally generate infinite loops. This will make your code run over and over again without stopping!. In fact, if we forgot the duplicate of getting userGuess, it will ask us infinitely.
+
+### Segue: Basic Refactoring: Dry Code
+
+You should notice that we have two exactly same code in different lines. You code may work but this is wrong. This is called a code smell.
+
+Code smells are code defects that may not present problems now, but will likely do in the future. For example, if we change the prompt in the first assignment of `userGuess` but forgot in in the second, we produce the issue of inconsistency.
+
+In this very specific case, using a `while` loop is wrong. Other languages has a concept of a `do` ... `while` loop. Python does not, so we'll have to work around this:
+
+```python
+import random
+
+secretNumber = random.randint(5, 20)
+
+while True:
+    userGuess = int(input("Guess my secret number: "))
+    if userGuess == secretNumber:
+        print("You got it!")
+        break
+    elif userGuess < secretNumber:
+        print("No, it's a little higher than that")
+    else:
+        print("No, it's a little lower than that")
+```
+
+### For Loop
+
+Such loops are useful for looping through a range of numbers or a list. A list is a value that contains multiple values. For example:
+
+```python
+attendees = [ "Khael", "Philip", "Pam", "Enzo", "Nova" ]
+```
+
+`for` loops, go through lists like so:
+
+```python
+attendees = [ "Khael", "Philip", "Pam", "Enzo", "Nova" ]
+for name in attendees:
+    print(name)
+```
+
+It's also useful if you want to loop through a range of numbers, for example:
+
+```python
+for number in range(1, 10):
+    print(number) # will print 1 to 9
+```
+
+## List & Dictionaries
+
+You already know lists from loops. Dictionaries in python (or JSON in JavaScript lingo) are key value pairs. For example:
+
+```python
+sale = {
+    region: "Central America",
+    itemType: "Baby Food",
+    salesChannel: "Online Store",
+    unitCost: 300,
+    unitsSold: 20
+}
+```
+
+Dictionaries best represent real world individual objects where such objects have their own properties (keys). Ex. a pen has a color and brand, a car has engine type, chassis, etc.

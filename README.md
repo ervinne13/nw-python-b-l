@@ -35,10 +35,9 @@ Early coding best practices will be emphasized.
     - Why Python
     - Variables & Basic Arithmetic
     - Functions & Lambda Functions
-    - Control Statements
-    - Arrays & Dictionaries
-    - Loops
-- 
+    - Control Statements Pt1: Conditionals
+    - Control Statements Pt2: Loops
+    - Lists & Dictionaries
 
 ## Tips
 
