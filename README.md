@@ -37,7 +37,6 @@ Early coding best practices will be emphasized.
     - Functions & Lambda Functions
     - Control Statements Pt1: Conditionals
     - Control Statements Pt2: Loops
-    - Lists & Dictionaries
 
 ## Tips
 

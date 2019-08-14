@@ -309,7 +309,30 @@ print(convertedGrade)
 
 ## Control Statements Pt1: Looping Statements
 
-Looping statements are for when you want a certain operation to run again and again until a certain condition is still true, or you want your code to run through lists (to be explored later when we reach lists and dictionaries) or go through a range.
+Looping statements are for when you want a certain operation to run again and again until a certain condition is still true, or you want your code to run through lists, or go through a range.
+
+### For Loop
+
+Such loops are useful for looping through a range of numbers or a list. A list is a value that contains multiple values. For example:
+
+```python
+attendees = [ "Khael", "Philip", "Pam", "Enzo", "Nova" ]
+```
+
+`for` loops, go through lists like so:
+
+```python
+attendees = [ "Khael", "Philip", "Pam", "Enzo", "Nova" ]
+for name in attendees:
+    print(name)
+```
+
+It's also useful if you want to loop through a range of numbers, for example:
+
+```python
+for number in range(1, 10):
+    print(number) # will print 1 to 9
+```
 
 ### While Loop
 
@@ -373,42 +396,3 @@ while True:
     else:
         print("No, it's a little lower than that")
 ```
-
-### For Loop
-
-Such loops are useful for looping through a range of numbers or a list. A list is a value that contains multiple values. For example:
-
-```python
-attendees = [ "Khael", "Philip", "Pam", "Enzo", "Nova" ]
-```
-
-`for` loops, go through lists like so:
-
-```python
-attendees = [ "Khael", "Philip", "Pam", "Enzo", "Nova" ]
-for name in attendees:
-    print(name)
-```
-
-It's also useful if you want to loop through a range of numbers, for example:
-
-```python
-for number in range(1, 10):
-    print(number) # will print 1 to 9
-```
-
-## List & Dictionaries
-
-You already know lists from loops. Dictionaries in python (or JSON in JavaScript lingo) are key value pairs. For example:
-
-```python
-sale = {
-    region: "Central America",
-    itemType: "Baby Food",
-    salesChannel: "Online Store",
-    unitCost: 300,
-    unitsSold: 20
-}
-```
-
-Dictionaries best represent real world individual objects where such objects have their own properties (keys). Ex. a pen has a color and brand, a car has engine type, chassis, etc.
